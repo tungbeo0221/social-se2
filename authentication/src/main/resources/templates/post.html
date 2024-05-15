@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:if="${error}"> Error </title>
+  <title th:unless="${error}" th:text="${post.title}"> Post</title>
+  <link rel="stylesheet" th:href="@{/css/style/posts.css}">
+  <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
+
+</head>
+<div th:insert="header"></div>  
+<body>
+  <div class="container">
+    <div th:insert="navbar"></div>
+    <div class="post-detail">
+      <div th:if="${error}" class="alert alert-danger" role="alert">
+        Sorry, the post you requested doesn't exist!
+      </div>
+      <article th:unless="${error}">
+        <div class="post-detail__detail">
+          <img 
+            class="post-thumbnail" 
+            src="https://picsum.photos/seed/picsum/200/300"
+            alt="thumbnail"
+          >
+          <div class="post-user-tags">
+            <div class="post-user">
+              <img 
+                class="user-avatar" 
+                src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U" 
+                alt="avatar"
+              >
+              <div class="user-username-post-date">
+                <span class="user-username">David Johnson</span>
+                <span class="post-date">8 hours ago</span>
+              </div>
+              <div class="post-tags">
+                <div class="post-tag">
+                  # Technology
+                </div>
+                <div class="post-tag">
+                  # Artificial Intelligence
+                </div>
+                <div class="post-tag">
+                  # Technology
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+        <h1 class="post-title" th:utext="${post.title}">Title</h1>
+        <span class="post-content" th:utext="${post.content}">Content</span>
+      </article>
+      
+  
+      <div class="post-line"></div>
+  
+      <div class="comment-section">
+         <div class="input-button-container">
+          <div class="profile-picture">
+            <img
+                    class="user-avatar"
+                    src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+                    alt="avatar"
+            >
+          </div>
+          <form  id="commentForm"
+                 th:action="@{/posts/{id}/comment(id=${post.postId})}"
+                 method="POST"
+                 >
+            <div class="comment-container">
+              <div>
+                <textarea class="comment-input"
+                          placeholder="Comment..."
+                          name="content"></textarea>
+              </div>
+              <div>
+                <button class="comment-button"
+                        type="submit"
+                        id="postButton">Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+  
+            <div th:each="comment : ${comments}">
+              <div class="comment-option-container">
+                <div class="profile-picture">
+                  <img
+                          class="user-avatar"
+                          src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+                          alt="avatar"
+                  >
+                </div>
+              <div class="comment-username--time-container">
+                <div class="cmt-username">David Johnson</div>
+                <div class="cmt-time">8 hours ago</div>
+                <div class="cmt-container">
+                  <div th:text="${comment.content}" class="cmt-content"></div>
+                </div>
+  
+            </div>
+            </div>
+            </div>
+   </div>
+  </div>
+</body>
+<script>
+  document.getElementById("commentForm").addEventListener("submit", handleSubmitCmt);
+
+  function handleSubmitCmt(event){
+  event.preventDefault;
+
+  const form = event.target;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+  const jsonData = JSON.stringify(data);
+
+  fetch(form.action,{
+    method: "POST",
+    headers:{
+       "Content-type": "application/json"
+    },
+    body: jsonData,
+    redirect: "follow"
+  })
+  .then(response =>{
+    if(!response.ok){
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Success:', data);
+    window.location.reload();
+  })
+  .catch(error => {
+    console.error('Error:', error);
+
+  });
+  }
+</script>
+</html>

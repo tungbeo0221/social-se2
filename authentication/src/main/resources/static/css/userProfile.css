@@ -1,0 +1,254 @@
+body{
+    background-color: #EAEAEA;
+    font-family: "Outfit", sans-serif;
+    font-style: normal;
+    font-size: 24px;
+    font-weight: 400;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+/* userProfile.css */
+
+#container {
+    /* Styles for the container div */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    background-color: white;
+    padding: 15px;
+    gap: 10px;
+    width: 1280px;
+    height: 654px;
+    position: relative;
+}
+
+#profile-picture-container {
+    /* Styles for the profile picture container div */
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+}
+#setting-container {
+    position: absolute;
+    background-color: #EAEAEA;
+    border-radius: 10px;
+    width: 260px;
+    height: 70px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+#button-container{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+}
+#addfriend-button{
+    background-color: blue;
+    color: white;
+    border-radius: 8px;
+    padding: 5px;
+
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+}
+#follow-button{
+    cursor: pointer;
+
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 20px;
+}
+#message-button{
+    background-color: blue;
+    color: white;
+    border-radius: 8px;
+    padding: 5px;
+    width: 100px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+}
+ .material-symbols-outlined {
+     transform: scale(150%);
+     color: #254682;
+     padding-top: 5px;
+
+ }
+
+#edit-container{
+
+}
+#delete-container{
+
+}
+a{
+    text-decoration: none;
+    align-self: center;
+    color: #254682;
+}
+
+.setting{
+    display: flex;
+    text-decoration: none;
+    width: 205px;
+    height: 43px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-top: 15px;
+    gap: 20px;
+    border-radius: 8px;
+
+}
+.setting:hover{
+    background-color: #687883;
+
+}
+#profile-picture {
+    /* Styles for the profile picture div */
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    background-color: green;
+}
+h2{
+    font-weight: 400;
+    font-size: 24px;
+    margin-top: 0;
+}
+#profile-name {
+    /* Styles for the profile name div */
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+#information-container {
+    /* Styles for the information container div */
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    gap: 10px;
+
+}
+
+#username-gender-dob-container {
+    /* Styles for the username-gender-dob container div */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+#username-container {
+
+    /* Styles for the username container div */
+    padding: 10px;
+    gap: 10px;
+}
+
+#username {
+    /* Styles for the username div */
+
+}
+
+#gender-container {
+
+    /* Styles for the gender container div */
+    padding: 10px;
+    gap: 10px;
+}
+
+#gender {
+    /* Styles for the gender div */
+}
+
+#dob-container {
+    padding: 10px;
+    gap: 10px;
+    /* Styles for the date of birth container div */
+}
+
+#dob {
+    /* Styles for the date of birth div */
+}
+
+#following-post-container {
+    padding: 10px;
+    gap: 10px;
+    /* Styles for the following-post container div */
+    display: flex;
+    flex-direction: column;
+}
+
+#following-container {
+    padding: 10px;
+    gap: 10px;
+    /* Styles for the following container div */
+}
+
+#following {
+    /* Styles for the following div */
+}
+
+#post-container {
+    padding: 10px;
+    gap: 10px;
+    /* Styles for the post container div */
+}
+
+#post {
+    /* Styles for the post div */
+}
+
+#follower-comment-container {
+    padding: 10px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    /* Styles for the follower-comment container div */
+}
+
+#follower-container {
+    padding: 10px;
+    gap: 10px;
+    /* Styles for the follower container div */
+}
+
+#follower {
+    /* Styles for the follower div */
+}
+
+#comment-container {
+    padding: 10px;
+    gap: 10px;
+    /* Styles for the comment container div */
+}
+
+#comment {
+    /* Styles for the comment div */
+}
+
+/* Additional styles can be added as needed */
+.box{
+    border-radius: 8px;
+    background-color: #EAEAEA;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: fit-content;
+    font-weight: 300;
+    font-size: 24px;
+}
+.hugger{
+    height: 100px;
+    padding-top: 0px;
+}

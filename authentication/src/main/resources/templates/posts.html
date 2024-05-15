@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Posts</title>
+  <link rel="stylesheet" th:href="@{/css/style/posts.css}">
+  <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
+</head>
+<body>
+  <div th:insert="header"></div>
+  <div class="container">
+    <div th:insert="navbar"></div>
+    <div class="posts">
+      <div th:each="post : ${posts}" class="card">
+        <div class="post-item" th:onclick="window.location.href='/user-page/posts/' + [[${post.postId}]]">
+          <img 
+          class="post-thumbnail" 
+          src="https://picsum.photos/seed/picsum/200/300"
+          alt="avatar"
+          >
+          <div class="post-user-tags">
+            <div class="post-user">
+              <img 
+                class="user-avatar" 
+                src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U" 
+                alt="avatar"
+              >
+              <div class="user-username-post-date">
+                <span class="user-username">David Johnson</span>
+                <span class="post-date">8 hours ago</span>
+              </div>
+              <div class="post-tags">
+                <div class="post-tag">
+                  # Technology
+                </div>
+                <div class="post-tag">
+                  # Artificial Intelligence
+                </div>
+                <div class="post-tag">
+                  # Technology
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="post-title" th:utext="${post.title}">Post title</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script th:inline="javascript">
+    const postItem = document.querySelector(".post-item")
+
+    const handleOnClick = (postId) => {
+      window.location.href = '/posts/' + postId
+    }
+  </script>
+</body>
+</html>

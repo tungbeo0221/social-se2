@@ -1,0 +1,265 @@
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+.navbar {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  gap: 0;
+  padding: 15px;
+  background-color: white;
+  row-gap: 15px;
+  width: 300px;
+  position: fixed;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 300px;
+  padding-bottom: 15px;
+}
+
+.navbar__item {
+  display: flex;
+  align-items: center;
+  font-family: "Outfit";
+  font-weight: 300;
+  font-size: 24px;
+  gap: 10px;
+
+}
+
+
+.container {
+  width: 100%;
+  padding: 25px;
+  background-color: #EAEAEA;
+  display: grid;
+  display: flex;
+
+}
+
+.posts {
+  grid-column: 2;
+  padding: 25px;
+  width: 80%;
+  margin-left: 300px;
+}
+
+.post-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer; 
+  transition: background-color 0.3s ease;
+  gap: 0;
+  padding: 15px;
+  background-color: white;
+}
+
+.post-item:hover {
+  background-color: #f2f2f2;
+}
+
+.post-title {
+  font-family: "Outfit";
+  font-weight: bold;
+  font-weight: 700;
+  font-size: 36px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.post-content {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.user-avatar {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.post-user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-username-post-date {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-username {
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.post-date {
+  font-family: "Outfit";
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.post-tags {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.post-tag {
+  border-radius: 8px;
+  background-color: #1736F5;
+  padding: 5px;
+  color: #FFFFFF;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.post-thumbnail {
+  clip-path: inset(0px 0px 90% 0px);
+  margin-bottom: -134%;
+}
+
+.post-detail {
+  grid-column: 3 /4;
+  background-color: white;
+  padding: 25px;
+  border-radius: 5px;
+}
+
+.post-detail__detail {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 0;
+  background-color: white;
+}
+
+.post-content {
+  font-family: "Outfit";
+  font-weight: 300;
+  font-size: 24px;
+  color: black;
+  background-color: white;
+}
+
+/* Styles for the line below the post */
+.post-line {
+  border-bottom: 1px solid #ccc;
+  width: 100%; /* Adjust line width to match container */
+  margin-bottom: 10px; /* Add spacing below the line */
+}
+
+/* Styles for the comment section */
+.comment-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+}
+
+  /* Styles for the comment input and button and profile picture container */
+.input-button-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+
+}
+
+  /* Styles for the profile picture */
+.profile-picture {
+  width: 50px; /* Adjust the width of the profile picture */
+  height: 50px; /* Adjust the height of the profile picture */
+  margin: 20px;
+  /* Add margin to create space between profile picture and text area */
+}
+
+/* Styles for the comment input */
+.comment-input {
+  width: calc(600px - 0px); /* Adjust width based on button size */
+  height: 60px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+  flex-grow: 1;
+  /* 5. Text area for typing */
+}
+
+/* Styles for the comment button */
+.comment-button {
+  width: 50px; /* Adjust button width */
+  height: 40px; /* Adjust button height */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  /* 6. Square button */
+}
+
+/* Additional styles for comments */
+.comment-username--time-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 5px;
+  flex: 1;
+  margin-bottom: 10px;
+  position: relative;
+  padding: 8px;
+
+  /* 7. Comment styling */
+}
+
+.cmt-username{
+
+  font-size: 16px;
+  font-weight: 500px;
+  font-family: "Outfit";
+}
+
+.cmt-time{
+font-family: "Outfit";
+margin-top: 1px;
+margin-bottom: 1px;
+font-size: 10px;
+font-weight: thin;
+}
+
+.cmt-container{
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 8px;
+  word-wrap: break-word;
+  width: fit-content;
+  background-color: #f2f2f2;
+}
+
+.cmt-content{
+font-family: "Outfit";
+font-size: 16px;
+}
+
+/* Additional styles for container of comment area and option buttons*/
+.comment-option-container{
+  display: flex;
+  align-items: center;
+}

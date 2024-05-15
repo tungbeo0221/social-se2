@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link th:href="@{/css/userProfile.css}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,200" />
+
+</head>
+<body>
+<div id="container">
+    <div id="profile-picture-container">
+        <div id="setting-container">
+            <div id="edit-container" class="setting">
+                <i class="material-symbols-outlined">
+                    edit
+                </i>
+                <h2><a th:href="'/user/update/' + ${user.getId()}">Edit Profile</a></h2>
+            </div>
+
+        </div>
+        <div id="profile-picture"> </div>
+        <div id="profile-name"></div>
+        <h2 th:text="${user.getFullname()}"></h2>
+        <div id="button-container">
+            <div id="follow-button">Follow</div>
+
+        </div>
+    </div>
+    <div id="information-container">
+        <div id="username-gender-dob-container" >
+            <div id="username-container" class="hugger">
+                <h2>Username</h2>
+                <div id="username" class="box">
+                    <span th:text="${user.getFullname()}"></span>
+                </div>
+            </div>
+
+            <div id="gender-container" class="hugger">
+                <h2>Gender</h2>
+                <div id="gender" class="box">
+                    <span th:text="${user.getGender() == 1 ? 'Male' : (user.gender == 2 ? 'Female' : 'Other')}"></span>
+                </div>
+            </div>
+
+            <div id="dob-container" class="hugger">
+                <h2>Date of birth</h2>
+                <div id="dob" class="box">
+                    <span th:text="${#dates.format(user.getDob(), 'dd/MM/yyyy')}"></span>
+                </div>
+            </div>
+        </div>
+        <div id="following-post-container">
+            <div id="following-container" class="hugger">
+                <h2>Following</h2>
+                <div id="following" class="box">
+<!--                    <span th:text="${followingCount}"></span>-->
+                    <span th:text="${100}"></span>
+                </div>
+            </div>
+
+            <div id="post-container" class="hugger">
+                <h2>Post</h2>
+                <div id="post" class="box">
+                    <span th:text="3"></span>
+                </div>
+            </div>
+        </div>
+        <div id="follower-comment-container">
+            <div id="follower-container" class="hugger">
+                <h2>Follower</h2>
+                <div id="follower" class="box">
+<!--                    <span th:text="${followerCount}"></span>-->
+                    <span th:text="${10}"></span>
+
+                </div>
+            </div>
+
+            <div id="comment-container" class="hugger">
+                <h2>Comment</h2>
+                <div id="comment" class="box">
+                    <span th:text="42"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script>-->
+<!--    document.addEventListener("DOMContentLoaded", function() {-->
+<!--        const followButton = document.getElementById("follow-button");-->
+<!--        const userId = 2/* Current user's ID */;-->
+<!--        const profileUserId = 3/* Profile user's ID */;-->
+
+<!--        // Function to check if the current user is following the profile user-->
+<!--        function isFollowing() {-->
+<!--            // You should use AJAX or fetch to send a request to your backend to check if the user is following-->
+<!--            // Here, I'm assuming you have an endpoint '/follow/isFollowing' that returns true or false-->
+
+<!--            // Example using fetch-->
+<!--            return fetch(`/follow/isFollowing?userId=${userId}&profileUserId=${profileUserId}`)-->
+<!--                .then(response => response.json())-->
+<!--                .then(data => data.isFollowing);-->
+<!--        }-->
+
+<!--        function updateButton() {-->
+<!--            isFollowing().then(isFollowingUser => {-->
+<!--                followButton.textContent = isFollowingUser ? "Unfollow" : "Follow";-->
+<!--                followButton.style.backgroundColor = isFollowingUser ? "#E4E6EB" : "#0866FF";-->
+<!--                followButton.style.color = isFollowingUser ? null : "white";-->
+<!--            });-->
+<!--        }-->
+
+<!--        // Initial update of the button-->
+<!--        updateButton();-->
+
+<!--        // Click event handler for the follow/unfollow button-->
+<!--        followButton.addEventListener("click", function() {-->
+<!--            isFollowing().then(isFollowingUser => {-->
+<!--                if (isFollowingUser) {-->
+<!--                    // If already following, send request to unfollow-->
+<!--                    fetch(`/follow/unfollow?userId=${userId}&profileUserId=${profileUserId}`, {-->
+<!--                        method: 'DELETE'-->
+<!--                    })-->
+<!--                        .then(() => {-->
+<!--                            console.log("Unfollowed");-->
+<!--                            updateButton();-->
+<!--                        })-->
+<!--                        .catch(error => console.error('Error unfollowing:', error));-->
+<!--                } else {-->
+<!--                    // If not following, send request to follow-->
+<!--                    fetch(`/follow/follow?userId=${userId}&profileUserId=${profileUserId}`, {-->
+<!--                        method: 'POST'-->
+<!--                    })-->
+<!--                        .then(() => {-->
+<!--                            console.log("Followed");-->
+<!--                            updateButton();-->
+<!--                        })-->
+<!--                        .catch(error => console.error('Error following:', error));-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+</body>
+</html>

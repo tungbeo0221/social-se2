@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link th:href="@{/css/pe.css}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,200" />
+</head>
+<body>
+<div id="container">
+
+    <form method="post" th:action="'/user/update'" id="form-container">
+        <div id="profile-picture-container">
+            <div id="profile-picture"></div>
+
+            <div id="profile-picture-options-container">
+                <div class="box-2">
+                    <p>Upload  New Profile Picture</p>
+                </div>
+                <div class="box-2">
+                    <p>Delete Current  Profile Picture</p>
+                </div>
+            </div>
+
+        </div>
+        <input type="hidden" th:field="${user.id}">
+       <div id="information-input-container">
+           <div id="label-container">
+               <h2>Username:</h2>
+               <h2>Date of birth:</h2>
+               <h2>Gender:</h2>
+           </div>
+           <div id="input-container">
+               <input class="box" type="text"
+                      th:field="${user.fullname}">
+               <input class="box" type="date"
+                      th:field="${user.dob}">
+               <select th:field="${user.gender}" class="box">
+                   <option value="1">Male</option>
+                   <option value="2">Female</option>
+                   <option value="3">Other</option>
+
+               </select>
+           </div>
+       </div>
+        <p>
+            <button id="btn" type="submit">UPDATE</button>
+        </p>
+    </form>
+
+</div>
+
+</body>
+</html>

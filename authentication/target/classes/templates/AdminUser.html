@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0" />
+</head>
+
+<body>
+
+<!--Side Bar-->
+<div class="sidebar">
+    <div class="profile">
+        <h2 id="welcome">Welcome, Admin [[${user.getFullname()}]]</h2>
+
+    </div>
+    <ul class="navigation">
+        <li><div class="marker"></div><a th:href="@{/admin-page}" >User Management</a></li>
+        <li><a th:href="@{/admin-page/posts}" >Post Management</a></li>
+    </ul>
+    <span style=" display: flex; align-items: flex-end; padding-bottom: 30px; justify-content: center; flex: 1"
+          sec:authorize="isAuthenticated">
+        <a  id="btn"  th:href="@{/logout}">Log Out</a>
+
+    </span>
+</div>
+
+<div id="management-container-user">
+    <div id="search-container">
+        <form id="searchForm" method="get" th:action="@{/admin-page}">
+            <div class="search">
+                <i class="material-symbols-outlined">search</i>
+                <input id="keyword" type="search" name="keyword" th:value="${keyword}" placeholder="Search...">
+                <button type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+    <h2 id="post-manage-label">User List Management</h2>
+
+    <!-- User List Table -->
+    <div th:if="${users.size() > 0}">
+        <table class="table table-hover" style="text-align: left">
+            <thead>
+            <tr>
+                <th style="width: 3%">User ID</th>
+                <th style="width: 10%">User Name</th>
+                <th style="width: 7%">Number</th>
+                <th style="width: 7%">Date of Birth</th>
+                <th style="width: 8%">Gender</th>
+                <th style="width: 10%">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}" style="text-align: center; font-weight: bold;"></td>
+                <td><a th:href="@{'/user/profile/' + ${user.id}}" th:text="${user.fullname}"></a>
+                </td>
+                <td th:text="${user.phoneNo}"></td>
+                <td th:text="${#dates.format(user.dob, 'yyyy-MM-dd')}"></td>
+                <td th:text="${user.gender == 1 ? 'Male' : user.gender == 2 ? 'Female' : 'Other'}"></td>
+                <td th:text="${user.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:unless="${users.size() > 0}">
+        <p><span style="color: red; font-weight: bold; font-size: 20px;">No Users found!</span></p>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container" th:if="${totalPages > 0}">
+        <nav aria-label="Pagination">
+            <ul class="pagination justify-content-center">
+                <!-- First Page Link -->
+                <li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+                    <a class="page-link" th:href="@{/admin-page(size=${pageSize}, page=1, keyword=${keyword})}"><<</a>
+                </li>
+                <!-- Previous Page Link -->
+                <li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+                    <a class="page-link" th:href="@{/admin-page(size=${pageSize}, page=${currentPage - 1}, keyword=${keyword})}">Prev</a>
+                </li>
+                <!-- Page Number Links -->
+                <li class="page-item" th:each="page : ${#numbers.sequence(currentPage > 2 ? currentPage - 2 : 1, currentPage + 2 < totalPages ? currentPage + 2 : totalPages)}"
+                    th:classappend="${page == currentPage} ? 'active'">
+                    <a class="page-link" th:href="@{/admin-page(size=${pageSize}, page=${page}, keyword=${keyword})}" th:text="${page}"></a>
+                </li>
+                <!-- Next Page Link -->
+                <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+                    <a class="page-link" th:href="@{/admin-page(size=${pageSize}, page=${currentPage + 1}, keyword=${keyword})}">Next</a>
+                </li>
+                <!-- Last Page Link -->
+                <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+                    <a class="page-link" th:href="@{/admin-page(size=${pageSize}, page=${totalPages}, keyword=${keyword})}">>></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+</body>
+</html>

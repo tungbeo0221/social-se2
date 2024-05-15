@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style/header.css}">
+</head>
+<body>
+  <div class="header" th:fragment="header">
+    <div class="create-post">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <rect width="36" height="36" fill="url(#pattern0_12_3198)"/>
+        <defs>
+        <pattern id="pattern0_12_3198" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <use xlink:href="#image0_12_3198" transform="scale(0.0104167)"/>
+        </pattern>
+        <image id="image0_12_3198" width="96" height="96" xlink:href="data:image/png;base64,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"/>
+        </defs>
+        </svg>
+      <a class="create-post_create" href="/user-page/posts/add">Create Post</a>
+    </div>
+    <div class="search-post">
+      <input class="search-post__search" type="" name="search" id="search-post" placeholder="Search...">
+    </div>
+    <span style=" display: flex; align-items: flex-end; justify-content: center"
+          sec:authorize="isAuthenticated">
+        <a  id="btn"  th:href="@{/logout}">Log Out</a>
+
+    </span>
+  </div>
+</body>
+</html>

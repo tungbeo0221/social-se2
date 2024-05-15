@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style/navbar.css}">
+</head>
+<body>
+  <!-- Declare the following div as a header fragment -->
+  <div class="navbar" th:fragment="navbar">
+    <div class="profile">
+      <img 
+      class="user-avatar" 
+      src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U" 
+      alt="avatar"
+      >
+      <span class="user-username">[[${user.getFullname()}]]</span>
+    </div>
+    <div class="navbar__item">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <rect width="36" height="36" fill="url(#pattern0_12_3066)"/>
+        <defs>
+        <pattern id="pattern0_12_3066" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <use xlink:href="#image0_12_3066" transform="scale(0.0104167)"/>
+        </pattern>
+        <image id="image0_12_3066" width="96" height="96" xlink:href="data:image/png;base64,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"/>
+        </defs>
+      </svg>  
+      <a class="nav-link" href="/user-page">Home</a>
+    </div>
+  </div>
+</body>
+</html>

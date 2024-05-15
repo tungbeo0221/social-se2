@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register new account</title>
+    <link th:href="@{../css/profileEdit.css}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,200" />
+</head>
+<body>
+<!--th:if="${message != null}"-->
+<div class="message"  th:if="${message != null}">
+    <h2 style="color: black; font-size: 30px; font-weight: 500; color: #0866FF">[[${message}]]</h2>
+</div>
+<div id="container">
+    <div id="left-info">
+        <img src="https://img.freepik.com/free-vector/flat-social-media-background-with-world-grlobe_23-2147818566.jpg?w=740&t=st=1715674014~exp=1715674614~hmac=1b2d5597a2fed6595245ceb5c3799e0bdce03f209eafede574ed3a5a50b01233">
+    </div>
+    <form method="post"
+          th:action="@{/registration}"
+          role="form"
+          th:object="${user}"
+          id="form-container">
+
+        <h2 style="color: black;
+        font-weight: 600;
+        font-size: 40px">
+            Create an account
+        </h2>
+
+        <div id="information-input-container">
+            <div class="form-group">
+                <label for="fullname">Fullname:</label>
+                <input th:field="*{fullname}" type="text" class="box" name="fullname" id="fullname" placeholder="Enter your fullname" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of birth:</label>
+                <input th:field="*{dob}" type="date" class="box" name="dob" id="dob">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input th:field="*{email}" type="email" class="box" name="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input th:field="*{password}" type="password" class="box" name="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNo">Phone Number:</label>
+                <input th:field="*{phoneNo}" type="tel" class="box" name="phoneNo" id="phoneNo" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select th:field="*{gender}" class="box" name="gender" id="gender">
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                    <option value="3">Other</option>
+                </select>
+            </div>
+        </div>
+        <button id="btn" type="submit">Register</button>
+
+        <p>
+            Already have an account? <a href="/login">Login</a>
+        </p>
+    </form>
+
+</div>
+
+</body>
+</html>
